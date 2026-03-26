@@ -1,0 +1,29 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv/
+.ipynb_checkpoints/
+
+# =========================
+# Data (very important)
+# =========================
+data/*
+!data/**/.gitkeep
+
+# =========================
+# Kaggle credentials
+# =========================
+kaggle.json
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+.vscode/
+.idea/

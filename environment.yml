@@ -1,0 +1,12 @@
+name: retail-favorita
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - fastapi
+  - uvicorn
+  - pandas
+  - pytest
+  - pip:
+      - kaggle
