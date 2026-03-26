@@ -11,10 +11,20 @@ __pycache__/
 .ipynb_checkpoints/
 
 # =========================
-# Data (very important)
+# Data
 # =========================
-data/*
-!data/**/.gitkeep
+data/external/kaggle/*
+data/raw/*
+data/interim/*
+data/curated/*
+
+# Keep directory structure
+!data/.gitkeep
+!data/external/.gitkeep
+!data/external/kaggle/.gitkeep
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/curated/.gitkeep
 
 # =========================
 # Kaggle credentials
