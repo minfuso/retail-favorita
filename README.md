@@ -7,6 +7,7 @@
 - [Data Organization](#data-organization)
 - [Installation](#installation)
 - [Usage](#usage)
+- [API](#api-layer)
 - [Roadmap](#roadmap)
 - [Tech Stack](#tech-stack)
 
@@ -45,11 +46,19 @@ The platform is intentionally simplified and designed for learning purposes whil
 
 The project follows a simplified modern data platform design:
 
-External Data Sources  
-→ Ingestion Layer (Raw data)  
-→ Transformation Layer (Interim datasets)  
-→ Analytics Layer (Curated datasets)  
-→ Data Serving (API / BI / ML)
+```text
+External Data Sources (Kaggle dataset)
+        ↓
+Simulated Source APIs (FastAPI)
+        ↓
+Ingestion Layer (Raw data)
+        ↓
+Transformation Layer (Interim datasets)
+        ↓
+Analytics Layer (Curated datasets)
+        ↓
+Data Consumption (BI / ML)
+```
 
 This structure enables clear separation of concerns and reproducible data workflows.
 
@@ -172,18 +181,60 @@ The project will progressively provide scripts and services to:
 
 [Back to top](#retail-favorita)
 
+## API Layer
+
+The project includes a FastAPI application that simulates multiple operational data sources in a retail environment.
+
+The API exposes three main domains:
+
+- **Retail**: operational sales and store data
+- **Government**: calendar events and holidays
+- **Finance**: external economic indicators (oil prices)
+
+### Available endpoints
+
+#### Retail
+- `GET /retail/stores`
+- `GET /retail/stores/{store_nbr}`
+- `GET /retail/sales`
+
+#### Government
+- `GET /government/holidays`
+
+#### Finance
+- `GET /finance/oil`
+
+All endpoints support filtering through query parameters such as:
+- date ranges (`start_date`, `end_date`)
+- store identifiers
+- locale and event filters
+
+The API is designed to simulate real-world data sources and will be used as input for ingestion pipelines.
+
+### Run the API
+
+```bash
+uvicorn retail_api.main:app --reload
+```
+
+Then access:
+- API: http://127.0.0.1:8000
+- Documentation: http://127.0.0.1/8000/docs
+
+[Back to top](#retail-favorita)
+
 ## Roadmap
 
 Planned development steps:
 
-- [ ] External dataset ingestion automation
-- [ ] Dataset analysis
-- [ ] Dataset preparation for API
-- [ ] Creation of simulated retail source APIs
+- [x] External dataset ingestion automation
+- [x] Dataset analysis
+- [x] Dataset preparation for API
+- [x] Creation of simulated retail source APIs
 - [ ] Raw data ingestion pipeline
 - [ ] Data cleaning and standardization
 - [ ] Curated analytics dataset creation
-- [ ] API endpoints for data access
+- [x] API endpoints for data access
 - [ ] Integration with BI and machine learning workflows
 
 [Back to top](#retail-favorita)
